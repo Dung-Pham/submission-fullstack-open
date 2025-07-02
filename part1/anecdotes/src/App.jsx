@@ -1,16 +1,21 @@
 import { useState } from 'react'
 
-const Statistics = ({all, average, positive}) => {
-  if (all === 0) {
+const StatisticLine = ({text, value}) => <p>{text} {value}</p>
+const Statistics = (props) => {
+  const list = props.statistics
+  if (list[3] === 0) {
     return(
       <p>No feedback given</p>
     )
   }
   return (
     <>
-      <p>all {all}</p>
-      <p>average {average.toFixed(13)}</p>
-      <p>positive {positive.toFixed(13)} %</p>
+      <StatisticLine text='good' value = {list[0]}/>
+      <StatisticLine text='neutral' value = {list[1]}/>
+      <StatisticLine text='bad' value = {list[2]}/>
+      <StatisticLine text='all' value = {list[3]}/>
+      <StatisticLine text='average' value = {list[4]}/>
+      <StatisticLine text='positive' value = {`${list[5]} %`}/>
     </>
   )
 }
@@ -57,10 +62,7 @@ const App = () => {
       <button onClick={setToNeutral}>neutral</button>
       <button onClick={setToBad}>bad</button>
       <h1>statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <Statistics all = {all} average = {average} positive = {positive}/>
+      <Statistics statistics = {[good, neutral, bad, all, average.toFixed(13), positive.toFixed(13)]}/>
 
     </div>
   )
