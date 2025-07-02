@@ -1,6 +1,14 @@
 import { useState } from 'react'
 
-
+const Statistics = ({all, average, positive}) => {
+  return (
+    <>
+      <p>all {all}</p>
+      <p>average {average.toFixed(13)}</p>
+      <p>positive {positive.toFixed(13)} %</p>
+    </>
+  )
+}
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -47,9 +55,7 @@ const App = () => {
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {average.toFixed(13)}</p>
-      <p>positive {positive.toFixed(13)} %</p>
+      <Statistics all = {all} average = {average} positive = {positive}/>
 
     </div>
   )
