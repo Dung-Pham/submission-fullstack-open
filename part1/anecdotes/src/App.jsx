@@ -1,6 +1,13 @@
 import { useState } from 'react'
 
-const StatisticLine = ({text, value}) => <p>{text} {value}</p>
+const StatisticLine = ({text, value}) =>{
+  return(
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
+  )
+}
 const Statistics = (props) => {
   const list = props.statistics
   if (list[3] === 0) {
@@ -9,14 +16,16 @@ const Statistics = (props) => {
     )
   }
   return (
-    <>
-      <StatisticLine text='good' value = {list[0]}/>
-      <StatisticLine text='neutral' value = {list[1]}/>
-      <StatisticLine text='bad' value = {list[2]}/>
-      <StatisticLine text='all' value = {list[3]}/>
-      <StatisticLine text='average' value = {list[4]}/>
-      <StatisticLine text='positive' value = {`${list[5]} %`}/>
-    </>
+    <table>
+      <tbody>
+        <StatisticLine text='good' value = {list[0]}/>
+        <StatisticLine text='neutral' value = {list[1]}/>
+        <StatisticLine text='bad' value = {list[2]}/>
+        <StatisticLine text='all' value = {list[3]}/>
+        <StatisticLine text='average' value = {list[4]}/>
+        <StatisticLine text='positive' value = {`${list[5]} %`}/>
+      </tbody>
+    </table>
   )
 }
 const App = () => {
