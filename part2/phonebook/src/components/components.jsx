@@ -7,7 +7,7 @@ export const Filter = ({persons}) =>{
     setSearchName(e.target.value)
   }
   const handleClickSearch = () =>{
-    setSearchResults(persons.filter(person => person.name.toLowerCase().includes(searchName)))
+    setSearchResults(persons.filter(person => person.name.toLowerCase().includes(searchName.toLowerCase())))
   }
     return(
         <>
